@@ -1,0 +1,252 @@
+{
+  "max_sharpe": {
+    "date": "2025-07-11",
+    "strategy": "max_sharpe",
+    "optimizer_version": "portfolio-v1.0",
+    "mu_source": "predictions",
+    "cov_method": "ledoit_wolf",
+    "weights": [
+      {
+        "symbol": "RELIANCE",
+        "weight": 0.098194,
+        "predicted_return": 0.6118651948576044,
+        "risk_contribution": 0.088207,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "TCS",
+        "weight": 0.037787,
+        "predicted_return": 0.2907181021786274,
+        "risk_contribution": 0.014191,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "HDFCBANK",
+        "weight": 0.111589,
+        "predicted_return": 0.6918764728212783,
+        "risk_contribution": 0.114773,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "INFY",
+        "weight": 0.115528,
+        "predicted_return": 0.7130102697347411,
+        "risk_contribution": 0.122799,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "ICICIBANK",
+        "weight": 0.137429,
+        "predicted_return": 0.8275037085545717,
+        "risk_contribution": 0.171689,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "ITC",
+        "weight": 0.120055,
+        "predicted_return": 0.7466235909090007,
+        "risk_contribution": 0.134179,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "LT",
+        "weight": 0.057792,
+        "predicted_return": 0.38051810034547967,
+        "risk_contribution": 0.030151,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "SBIN",
+        "weight": 0.132812,
+        "predicted_return": 0.7750762453526987,
+        "risk_contribution": 0.154588,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "AXISBANK",
+        "weight": 0.114936,
+        "predicted_return": 0.7043298266839345,
+        "risk_contribution": 0.120545,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "MARUTI",
+        "weight": 0.073876,
+        "predicted_return": 0.4664709349518123,
+        "risk_contribution": 0.048879,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      }
+    ],
+    "expected_return": 0.6743497913688662,
+    "volatility": 0.05781847820740149,
+    "sharpe": 10.625492237362653,
+    "shrinkage": 0.8933466401847046,
+    "n_assets": 10,
+    "dropped_symbols": [],
+    "constraint_status": {
+      "sum_to_one": true,
+      "non_negative": true,
+      "within_cap": true,
+      "max_weight": 0.137429156724286
+    },
+    "optimization_status": "optimal"
+  },
+  "min_volatility": {
+    "date": "2025-07-11",
+    "strategy": "min_volatility",
+    "optimizer_version": "portfolio-v1.0",
+    "mu_source": "predictions",
+    "cov_method": "ledoit_wolf",
+    "weights": [
+      {
+        "symbol": "RELIANCE",
+        "weight": 0.100627,
+        "predicted_return": 0.6118651948576044,
+        "risk_contribution": 0.100627,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "TCS",
+        "weight": 0.097119,
+        "predicted_return": 0.2907181021786274,
+        "risk_contribution": 0.097119,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "HDFCBANK",
+        "weight": 0.098457,
+        "predicted_return": 0.6918764728212783,
+        "risk_contribution": 0.098457,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "INFY",
+        "weight": 0.09934,
+        "predicted_return": 0.7130102697347411,
+        "risk_contribution": 0.09934,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "ICICIBANK",
+        "weight": 0.100097,
+        "predicted_return": 0.8275037085545717,
+        "risk_contribution": 0.100097,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "ITC",
+        "weight": 0.096849,
+        "predicted_return": 0.7466235909090007,
+        "risk_contribution": 0.096849,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "LT",
+        "weight": 0.100437,
+        "predicted_return": 0.38051810034547967,
+        "risk_contribution": 0.100437,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "SBIN",
+        "weight": 0.104952,
+        "predicted_return": 0.7750762453526987,
+        "risk_contribution": 0.104952,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "AXISBANK",
+        "weight": 0.100509,
+        "predicted_return": 0.7043298266839345,
+        "risk_contribution": 0.100509,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "MARUTI",
+        "weight": 0.101613,
+        "predicted_return": 0.4664709349518123,
+        "risk_contribution": 0.101613,
+        "diversification_benefit": false,
+        "max_cap_hit": false
+      }
+    ],
+    "expected_return": 0.6216500014421966,
+    "volatility": 0.05528301003742785,
+    "sharpe": 10.159540898043481,
+    "shrinkage": 0.8933466401847046,
+    "n_assets": 10,
+    "dropped_symbols": [],
+    "constraint_status": {
+      "sum_to_one": true,
+      "non_negative": true,
+      "within_cap": true,
+      "max_weight": 0.10495194842561244
+    },
+    "optimization_status": "optimal"
+  },
+  "risk_aware": {
+    "date": "2025-07-11",
+    "strategy": "risk_aware",
+    "optimizer_version": "portfolio-v1.0",
+    "mu_source": "predictions",
+    "cov_method": "ledoit_wolf",
+    "weights": [
+      {
+        "symbol": "ICICIBANK",
+        "weight": 0.4,
+        "predicted_return": 0.8275037085545717,
+        "risk_contribution": 0.445638,
+        "diversification_benefit": false,
+        "max_cap_hit": true
+      },
+      {
+        "symbol": "ITC",
+        "weight": 0.2,
+        "predicted_return": 0.7466235909090007,
+        "risk_contribution": 0.112653,
+        "diversification_benefit": true,
+        "max_cap_hit": false
+      },
+      {
+        "symbol": "SBIN",
+        "weight": 0.4,
+        "predicted_return": 0.7750762453526987,
+        "risk_contribution": 0.441708,
+        "diversification_benefit": false,
+        "max_cap_hit": true
+      }
+    ],
+    "expected_return": 0.7903566997447082,
+    "volatility": 0.1035375768846091,
+    "sharpe": 7.054025424592258,
+    "shrinkage": 0.8933466401847046,
+    "n_assets": 10,
+    "dropped_symbols": [],
+    "constraint_status": {
+      "sum_to_one": true,
+      "non_negative": true,
+      "within_cap": true,
+      "max_weight": 0.4
+    },
+    "optimization_status": "optimal"
+  }
+}

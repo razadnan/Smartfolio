@@ -1,0 +1,9 @@
+SEED = 42
+W_MAX = 0.40
+TRADING_DAYS = 252
+RISK_FREE_RATE = 0.06   # annual; India ~6%, keep configurable
+OPTIMIZER_VERSION = "portfolio-v1.0"
+PREDICTION_HORIZON_DAYS = 5   # confirm with Student 1
+RISK_AVERSION = 3.0   # lambda for Risk-Aware strategy
+LOOKBACK_DAYS = 252      # rows of history used for covariance
+MIN_OBS = 60

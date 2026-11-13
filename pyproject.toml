@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartfolio"
+version = "1.0.0"
+description = "Adaptive Feedback-Driven ML Framework for Portfolio Optimization"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas", "numpy", "scikit-learn", "xgboost", "torch",
+    "pyarrow", "pyyaml", "yfinance", "cvxpy",
+    "fastapi", "uvicorn", "sqlalchemy", "scipy",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["smartfolio*", "configs*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v"

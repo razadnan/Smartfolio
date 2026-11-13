@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-09-22T03:11:23",
+  "data_source": "mock",
+  "synthetic": true,
+  "official": false,
+  "seed": 42,
+  "config": {
+    "seed": 42,
+    "periods_per_year": 252,
+    "risk_free_rate": 0.0,
+    "walk_forward": {
+      "train_window_days": 756,
+      "rebalance_days": 21
+    },
+    "retraining": {
+      "every_days": 21,
+      "min_feedback_obs": 50,
+      "eval_window_days": 126
+    },
+    "bootstrap": {
+      "n_samples": 1000,
+      "block_size": 10,
+      "confidence": 0.95
+    },
+    "costs": {
+      "version": "2026-09-22",
+      "brokerage": 0.0,
+      "stt": 0.001,
+      "stamp_duty_buy": 0.00015,
+      "exchange_txn": 2.97e-05,
+      "sebi": 1e-06,
+      "gst": 0.18
+    },
+    "portfolio": {
+      "w_max": 0.4
+    },
+    "forecast_horizon_days": 5
+  },
+  "cost_assumptions": {
+    "version": "2026-09-22",
+    "brokerage": 0.0,
+    "stt": 0.001,
+    "stamp_duty_buy": 0.00015,
+    "exchange_txn": 2.97e-05,
+    "sebi": 1e-06,
+    "gst": 0.18
+  },
+  "versions": {
+    "python": "3.12.6",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6"
+  },
+  "walk_forward_override": {
+    "train_window": 252,
+    "rebalance_days": 21
+  }
+}

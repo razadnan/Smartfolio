@@ -1,0 +1,343 @@
+[
+  {
+    "date": "2021-03-16",
+    "decision": "SKIPPED",
+    "reason": "evaluation window overlaps champion training data"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v2",
+    "evaluation_period": "2021-01-18/2021-07-12",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.030719864590564874,
+        "rmse": 0.03876056322590643,
+        "r2": -0.15195138996862556,
+        "directional_accuracy": 0.4887295081967213
+      },
+      "challenger": {
+        "mae": 0.030719864590564874,
+        "rmse": 0.03876056322590643,
+        "r2": -0.15195138996862556,
+        "directional_accuracy": 0.4887295081967213
+      }
+    },
+    "accuracy_improved": false,
+    "sharpe_champion": 1.5483021271521096,
+    "sharpe_challenger": 1.5483021271521096,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.0,
+    "confidence_interval": [
+      0.0,
+      0.0
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2021-07-12",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": null,
+      "n_new_obs": 142,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2021-01-15"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v3",
+    "evaluation_period": "2021-04-15/2021-10-07",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.028780292951177146,
+        "rmse": 0.0369546603954087,
+        "r2": -0.12392499546603308,
+        "directional_accuracy": 0.48770491803278687
+      },
+      "challenger": {
+        "mae": 0.028470332049387953,
+        "rmse": 0.03648190938079799,
+        "r2": -0.09535279088935811,
+        "directional_accuracy": 0.4702868852459016
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": 2.0101661018775965,
+    "sharpe_challenger": 2.0225345340465024,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.01236843216890593,
+    "confidence_interval": [
+      -1.07489337471774,
+      1.3078545623046853
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2021-10-07",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2021-04-14"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v4",
+    "evaluation_period": "2021-07-13/2022-01-04",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.028368747979313817,
+        "rmse": 0.03620741967338804,
+        "r2": -0.1587983727786506,
+        "directional_accuracy": 0.4774590163934426
+      },
+      "challenger": {
+        "mae": 0.027590013608827388,
+        "rmse": 0.03531416934062149,
+        "r2": -0.102327686412923,
+        "directional_accuracy": 0.48668032786885246
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": 0.7556190032434662,
+    "sharpe_challenger": 0.8907991888899455,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.13518018564647927,
+    "confidence_interval": [
+      -1.0342786615976713,
+      1.4430551048861495
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2022-01-04",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2021-07-12"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v5",
+    "evaluation_period": "2021-10-08/2022-04-01",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.029777956415635902,
+        "rmse": 0.037598798138697015,
+        "r2": -0.14350753293326113,
+        "directional_accuracy": 0.48463114754098363
+      },
+      "challenger": {
+        "mae": 0.028741072218158074,
+        "rmse": 0.03649596246638207,
+        "r2": -0.07740936700968604,
+        "directional_accuracy": 0.5174180327868853
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": -0.3526595360491939,
+    "sharpe_challenger": -0.3808163734825869,
+    "metric": "sharpe_difference",
+    "observed_diff": -0.02815683743339298,
+    "confidence_interval": [
+      -1.299254197331135,
+      1.3214069854748225
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2022-04-01",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2021-10-07"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v6",
+    "evaluation_period": "2022-01-05/2022-06-29",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.029724694963720464,
+        "rmse": 0.03754519661762715,
+        "r2": -0.1392012941585008,
+        "directional_accuracy": 0.5081967213114754
+      },
+      "challenger": {
+        "mae": 0.028677818046022596,
+        "rmse": 0.0365023208230039,
+        "r2": -0.0767940803375442,
+        "directional_accuracy": 0.5184426229508197
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": -1.0645720963570853,
+    "sharpe_challenger": -1.2658116735466813,
+    "metric": "sharpe_difference",
+    "observed_diff": -0.20123957718959606,
+    "confidence_interval": [
+      -1.5024228186514397,
+      1.103042120410524
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2022-06-29",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2022-01-04"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v7",
+    "evaluation_period": "2022-04-04/2022-09-26",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.029573549625669025,
+        "rmse": 0.037395038656871965,
+        "r2": -0.17053167227553678,
+        "directional_accuracy": 0.514344262295082
+      },
+      "challenger": {
+        "mae": 0.028695297288597217,
+        "rmse": 0.036506180679786525,
+        "r2": -0.11554731222122694,
+        "directional_accuracy": 0.4989754098360656
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": -0.12357966114589543,
+    "sharpe_challenger": 0.7844521357545997,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.9080317969004952,
+    "confidence_interval": [
+      -0.1484960972243564,
+      2.2227569663951776
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2022-09-26",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2022-04-01"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v8",
+    "evaluation_period": "2022-06-30/2022-12-22",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.03113418877170791,
+        "rmse": 0.03915385144039082,
+        "r2": -0.19480003437596816,
+        "directional_accuracy": 0.48770491803278687
+      },
+      "challenger": {
+        "mae": 0.030181485780136776,
+        "rmse": 0.038199041579339364,
+        "r2": -0.13723752665237798,
+        "directional_accuracy": 0.49077868852459017
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": 1.2396601206735498,
+    "sharpe_challenger": 2.0731099472924392,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.8334498266188894,
+    "confidence_interval": [
+      -1.0001826922397796,
+      2.8932876746348493
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2022-12-22",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2022-06-29"
+  },
+  {
+    "champion_version": "v1",
+    "challenger_version": "v9",
+    "evaluation_period": "2022-09-27/2023-03-21",
+    "prediction_metrics": {
+      "champion": {
+        "mae": 0.031364661333240236,
+        "rmse": 0.03906349405044927,
+        "r2": -0.20017069397495302,
+        "directional_accuracy": 0.4723360655737705
+      },
+      "challenger": {
+        "mae": 0.030151479978546825,
+        "rmse": 0.03762204891841151,
+        "r2": -0.11323213088944528,
+        "directional_accuracy": 0.4948770491803279
+      }
+    },
+    "accuracy_improved": true,
+    "sharpe_champion": 1.2248779998148973,
+    "sharpe_challenger": 1.8905141838690656,
+    "metric": "sharpe_difference",
+    "observed_diff": 0.6656361840541682,
+    "confidence_interval": [
+      -1.0781375370504687,
+      2.3939164094168226
+    ],
+    "n_samples": 1000,
+    "block_size": 10,
+    "seed": 42,
+    "decision": "REJECTED",
+    "reason": "No statistically significant portfolio-level improvement",
+    "date": "2023-03-21",
+    "feedback_trigger": {
+      "retrain": true,
+      "days_since": 63,
+      "n_new_obs": 63,
+      "reason": "cadence and minimum feedback both met"
+    },
+    "champion_train_end": "2020-12-17",
+    "challenger_train_end": "2022-09-26"
+  }
+]

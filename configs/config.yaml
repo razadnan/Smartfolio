@@ -1,0 +1,48 @@
+seed: 42
+periods_per_year: 252
+risk_free_rate: 0.06
+
+data:
+  start_date: "2010-01-01"
+  end_date: "2026-09-01"
+  index_symbol: "^NSEI"
+  vix_symbol: "^INDIAVIX"
+
+paths:
+  raw: "data/raw"
+  processed: "data/processed"
+  features: "data/features"
+  metadata: "data/metadata"
+
+model:
+  horizon_days: 5
+  feature_version: "feat-v1.0"
+  model_version: "forecast-v1.0"
+
+walk_forward:
+  train_window_days: 756
+  rebalance_days: 21
+
+retraining:
+  every_days: 21
+  min_feedback_obs: 50
+  eval_window_days: 126
+
+bootstrap:
+  n_samples: 1000
+  block_size: 10
+  confidence: 0.95
+
+costs:
+  version: "2026-09-22"
+  brokerage: 0.0
+  stt: 0.001
+  stamp_duty_buy: 0.00015
+  exchange_txn: 0.0000297
+  sebi: 0.000001
+  gst: 0.18
+
+portfolio:
+  w_max: 0.40
+
+forecast_horizon_days: 5
