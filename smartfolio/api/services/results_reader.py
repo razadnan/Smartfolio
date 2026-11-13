@@ -139,3 +139,31 @@ def feedback(kind: str, base: Path = None) -> list[dict]:
                 return rows
 
     raise ResultsNotFound("No feedback data found in results directory")
+
+
+def comparison_extended(base: Path = None) -> dict:
+    p = (base or RESULTS_DIR) / "comparison_extended.json"
+    if not p.exists():
+        raise ResultsNotFound("comparison_extended.json not found")
+    return json.loads(p.read_text())
+
+
+def cost_sensitivity(base: Path = None) -> list[dict]:
+    p = (base or RESULTS_DIR) / "cost_sensitivity.json"
+    if not p.exists():
+        raise ResultsNotFound("cost_sensitivity.json not found")
+    return json.loads(p.read_text())
+
+
+def stress_tests(base: Path = None) -> list[dict]:
+    p = (base or RESULTS_DIR) / "stress_tests.json"
+    if not p.exists():
+        raise ResultsNotFound("stress_tests.json not found")
+    return json.loads(p.read_text())
+
+
+def tournament_results(base: Path = None) -> dict:
+    p = (base or RESULTS_DIR) / "tournament_results.json"
+    if not p.exists():
+        raise ResultsNotFound("tournament_results.json not found")
+    return json.loads(p.read_text())

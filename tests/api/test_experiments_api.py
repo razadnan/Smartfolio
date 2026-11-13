@@ -38,3 +38,21 @@ def test_missing_results_gives_clean_404(monkeypatch, tmp_path):
     assert r.status_code == 404
     assert r.json()["error"] == "results_not_found"
     assert client.get("/experiments").json() == []
+
+
+def test_extended_experiments_endpoints():
+    r1 = client.get("/extended-comparison")
+    assert r1.status_code == 200
+    assert len(r1.json()["experiments"]) >= 12
+
+    r2 = client.get("/cost-sensitivity")
+    assert r2.status_code == 200
+    assert len(r2.json()) == 4
+
+    r3 = client.get("/stress-tests")
+    assert r3.status_code == 200
+    assert len(r3.json()) >= 8
+
+    r4 = client.get("/tournament")
+    assert r4.status_code == 200
+    assert "E0" in r4.json()["experiments"]

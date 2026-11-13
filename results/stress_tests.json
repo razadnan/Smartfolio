@@ -1,0 +1,66 @@
+[
+  {
+    "strategy": "E0",
+    "full_sharpe": 0.883,
+    "full_max_drawdown": -0.0859,
+    "shock_window_1_drawdown": -0.0383,
+    "shock_window_2_drawdown": -0.0522,
+    "turnover": 0.025
+  },
+  {
+    "strategy": "E1",
+    "full_sharpe": 0.027,
+    "full_max_drawdown": -0.1822,
+    "shock_window_1_drawdown": -0.1107,
+    "shock_window_2_drawdown": -0.1142,
+    "turnover": 0.16
+  },
+  {
+    "strategy": "E2",
+    "full_sharpe": -0.005,
+    "full_max_drawdown": -0.1882,
+    "shock_window_1_drawdown": -0.1114,
+    "shock_window_2_drawdown": -0.1182,
+    "turnover": 0.164
+  },
+  {
+    "strategy": "E7",
+    "full_sharpe": 1.114,
+    "full_max_drawdown": -0.0747,
+    "shock_window_1_drawdown": -0.0385,
+    "shock_window_2_drawdown": -0.0496,
+    "turnover": 0.028
+  },
+  {
+    "strategy": "E8",
+    "full_sharpe": 0.877,
+    "full_max_drawdown": -0.0855,
+    "shock_window_1_drawdown": -0.0385,
+    "shock_window_2_drawdown": -0.0522,
+    "turnover": 0.024
+  },
+  {
+    "strategy": "E10",
+    "full_sharpe": 0.692,
+    "full_max_drawdown": -0.1608,
+    "shock_window_1_drawdown": -0.0446,
+    "shock_window_2_drawdown": -0.082,
+    "turnover": 0.547
+  },
+  {
+    "strategy": "E11",
+    "full_sharpe": 0.327,
+    "full_max_drawdown": -0.1736,
+    "shock_window_1_drawdown": -0.0485,
+    "shock_window_2_drawdown": -0.094,
+    "turnover": 0.598
+  },
+  {
+    "strategy": "E12",
+    "full_sharpe": 0.853,
+    "full_max_drawdown": -0.1608,
+    "shock_window_1_drawdown": -0.0446,
+    "shock_window_2_drawdown": -0.082,
+    "turnover": 0.535
+  }
+]

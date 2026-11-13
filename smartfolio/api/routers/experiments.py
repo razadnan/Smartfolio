@@ -29,6 +29,42 @@ def model_comparison():
         raise HTTPException(status_code=404, detail={"error": "results_not_found", "message": str(e)})
 
 
+@router.get("/extended-comparison")
+def extended_comparison():
+    """E0-E12 metrics across all tested models and optimizers."""
+    try:
+        return rr.comparison_extended()
+    except rr.ResultsNotFound as e:
+        raise HTTPException(status_code=404, detail={"error": "results_not_found", "message": str(e)})
+
+
+@router.get("/cost-sensitivity")
+def cost_sensitivity():
+    """E13: Slippage and transaction friction sensitivity (0 to 50 bps)."""
+    try:
+        return rr.cost_sensitivity()
+    except rr.ResultsNotFound as e:
+        raise HTTPException(status_code=404, detail={"error": "results_not_found", "message": str(e)})
+
+
+@router.get("/stress-tests")
+def stress_tests():
+    """E14: Crash stress testing under historical shocks (COVID 2020, 2022 bear)."""
+    try:
+        return rr.stress_tests()
+    except rr.ResultsNotFound as e:
+        raise HTTPException(status_code=404, detail={"error": "results_not_found", "message": str(e)})
+
+
+@router.get("/tournament")
+def tournament():
+    """E15: Out-of-sample championship tournament with bootstrap significance."""
+    try:
+        return rr.tournament_results()
+    except rr.ResultsNotFound as e:
+        raise HTTPException(status_code=404, detail={"error": "results_not_found", "message": str(e)})
+
+
 @router.get("/backtest")
 def backtest(experiment: Experiment = "E6"):
     try:

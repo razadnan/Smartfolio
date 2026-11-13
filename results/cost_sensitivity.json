@@ -1,0 +1,42 @@
+[
+  {
+    "friction_level": "0_bps_Frictionless",
+    "annual_return": 0.1168,
+    "volatility": 0.1321,
+    "sharpe": 0.4481,
+    "sortino": 0.6542,
+    "max_drawdown": -0.1627,
+    "turnover": 0.5978,
+    "total_friction_drag_pct": 0.0
+  },
+  {
+    "friction_level": "10_bps_Discount",
+    "annual_return": 0.0983,
+    "volatility": 0.1322,
+    "sharpe": 0.3213,
+    "sortino": 0.466,
+    "max_drawdown": -0.1741,
+    "turnover": 0.5978,
+    "total_friction_drag_pct": 4.3
+  },
+  {
+    "friction_level": "25_bps_SEBI_Statutory",
+    "annual_return": 0.0991,
+    "volatility": 0.1322,
+    "sharpe": 0.327,
+    "sortino": 0.4745,
+    "max_drawdown": -0.1736,
+    "turnover": 0.5978,
+    "total_friction_drag_pct": 4.1
+  },
+  {
+    "friction_level": "50_bps_Institutional_Impact",
+    "annual_return": 0.0611,
+    "volatility": 0.1329,
+    "sharpe": 0.0615,
+    "sortino": 0.088,
+    "max_drawdown": -0.1972,
+    "turnover": 0.5978,
+    "total_friction_drag_pct": 13.11
+  }
+]

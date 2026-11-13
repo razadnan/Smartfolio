@@ -15,6 +15,8 @@ from smartfolio.portfolio.ledoit_wolf import ledoit_wolf_cov
 from smartfolio.portfolio.markowitz import max_sharpe, min_volatility, risk_aware
 from smartfolio.portfolio.hrp import hrp_portfolio
 from smartfolio.portfolio.black_litterman import black_litterman as bl_model
+from smartfolio.portfolio.cvar import min_cvar_portfolio
+from smartfolio.portfolio.robust import robust_mvo_portfolio, risk_parity_portfolio, calculate_risk_contributions
 from smartfolio.portfolio.returns import predictive_alpha_returns
 from configs.config import RISK_FREE_RATE
 
@@ -307,6 +309,16 @@ def run_tradebulls_optimization(
             opt_w_series = hrp_portfolio(cov_matrix)
             opt_w_series = opt_w_series.clip(upper=max_w_eff)
             opt_w_series = opt_w_series / opt_w_series.sum()
+        elif strategy == "cvar":
+            opt_w_series = min_cvar_portfolio(
+                hist_returns[active_syms], alpha=0.95, w_max=max_w_eff, mu=mu_daily
+            )
+        elif strategy == "robust_mvo":
+            opt_w_series = robust_mvo_portfolio(
+                mu_daily, cov_matrix, uncertainty_scale=0.5, risk_aversion=3.0, w_max=max_w_eff
+            )
+        elif strategy == "risk_parity":
+            opt_w_series = risk_parity_portfolio(cov_matrix, w_max=max_w_eff)
         elif strategy == "black_litterman":
             # Parse subjective investor views if provided
             bl_views = None
@@ -486,6 +498,14 @@ def run_tradebulls_optimization(
     opt_vol = 0.12 if (np.isnan(opt_vol) or np.isinf(opt_vol)) else opt_vol
     opt_ret = 0.14 if (np.isnan(opt_ret) or np.isinf(opt_ret)) else opt_ret
     var_95_opt = round(opt_vol / np.sqrt(252) * 1.645 * 100, 2)
+    cvar_95_opt = round(opt_vol / np.sqrt(252) * 2.063 * 100, 2)
+
+    # Risk Contributions
+    risk_contrib_res = calculate_risk_contributions(o_w_norm, cov_arr)
+    risk_contributions = {
+        active_syms[i]: round(float(risk_contrib_res["percent_risk_contributions"][i]), 4)
+        for i in range(len(active_syms)) if o_w_norm[i] > 0.001
+    }
 
     health_after = compute_health_score(realized_target_weights, target_sec_w, opt_vol, opt_sharpe)
     frontier_pts = compute_efficient_frontier(hist_returns[active_syms].mean(), cov_matrix)
@@ -511,6 +531,8 @@ def run_tradebulls_optimization(
                 "volatility": round(opt_vol, 4),
                 "sharpe": round(opt_sharpe, 2),
                 "var_95_pct": var_95_opt,
+                "cvar_95_pct": cvar_95_opt,
+                "risk_contributions": risk_contributions,
             }
         },
         "trades": trades,

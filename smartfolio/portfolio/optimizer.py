@@ -9,12 +9,14 @@ from smartfolio.portfolio.ledoit_wolf import ledoit_wolf_cov, sample_cov
 from smartfolio.portfolio.markowitz import min_volatility, risk_aware, max_sharpe
 from smartfolio.portfolio.hrp import hrp_portfolio
 from smartfolio.portfolio.black_litterman import black_litterman as bl_model
+from smartfolio.portfolio.cvar import min_cvar_portfolio
+from smartfolio.portfolio.robust import robust_mvo_portfolio, risk_parity_portfolio, calculate_risk_contributions
 from smartfolio.portfolio.constraints import validate_weights, cap_hit_flags
 
-STRATEGIES = {"max_sharpe", "min_volatility", "risk_aware", "hrp", "black_litterman"}
+STRATEGIES = {"max_sharpe", "min_volatility", "risk_aware", "hrp", "black_litterman", "cvar", "robust_mvo", "risk_parity"}
 
 
-def _run_strategy(strategy, mu, cov, w_max, rf, risk_aversion):
+def _run_strategy(strategy, mu, cov, w_max, rf, risk_aversion, hist=None):
     if strategy == "max_sharpe":
         return max_sharpe(mu, cov, rf=rf, w_max=w_max)
     if strategy == "min_volatility":
@@ -23,6 +25,14 @@ def _run_strategy(strategy, mu, cov, w_max, rf, risk_aversion):
         return hrp_portfolio(cov)
     if strategy == "black_litterman":
         return max_sharpe(mu, cov, rf=rf, w_max=w_max)
+    if strategy == "cvar":
+        if hist is not None and len(hist) > 10:
+            return min_cvar_portfolio(hist, alpha=0.95, w_max=w_max, mu=mu)
+        return min_volatility(mu, cov, w_max=w_max)
+    if strategy == "robust_mvo":
+        return robust_mvo_portfolio(mu, cov, uncertainty_scale=0.5, risk_aversion=risk_aversion, w_max=w_max, rf=rf)
+    if strategy == "risk_parity":
+        return risk_parity_portfolio(cov, w_max=w_max)
     return risk_aware(mu, cov, risk_aversion=risk_aversion, w_max=w_max)
 
 
@@ -78,7 +88,7 @@ def optimize_portfolio(returns: pd.DataFrame, date, strategy: str = "max_sharpe"
         raise ValueError("cov_method must be 'ledoit_wolf' or 'sample'.")
 
     # 5. optimize + validate
-    w = _run_strategy(strategy, mu, cov, w_max, rf, risk_aversion)
+    w = _run_strategy(strategy, mu, cov, w_max, rf, risk_aversion, hist=hist)
     status = validate_weights(w, w_max)
 
     # 6. portfolio metrics
