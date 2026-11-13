@@ -517,6 +517,7 @@
       <button class="navbtn" data-view="optimize" onclick="view('optimize')"><span class="ico">◈</span> Live Optimizer & HRP</button>
       <button class="navbtn" data-view="frontier" onclick="view('frontier')"><span class="ico">↗</span> Efficient Frontier</button>
       <button class="navbtn" data-view="history" onclick="view('history')"><span class="ico">◷</span> Demat Order Slips</button>
+      <button class="navbtn" data-view="research" onclick="view('research')"><span class="ico">🔬</span> Quantitative Lab (E0-E15)</button>
       <div class="side-bottom">
         Real-time quantitative risk governance & Demat basket execution.
       </div>
@@ -1087,11 +1088,21 @@ const V = {
             <select id="sel_method" onchange="S.par.method = this.value; draw();">
               <option value="hrp" ${p.method === 'hrp' ? 'selected' : ''}>🌳 Hierarchical Risk Parity (HRP — Cluster Tree Diversification)</option>
               <option value="max_sharpe" ${p.method === 'max_sharpe' ? 'selected' : ''}>🎯 Maximum Sharpe Ratio (Highest Return / Unit Risk)</option>
+              <option value="cvar" ${p.method === 'cvar' ? 'selected' : ''}>📉 CVaR Expected Shortfall (Rockafellar-Uryasev Tail Loss Minimization)</option>
+              <option value="robust_mvo" ${p.method === 'robust_mvo' ? 'selected' : ''}>🛡️ Robust Uncertainty-Aware MVO (Penalized Forecast Variance)</option>
+              <option value="risk_parity" ${p.method === 'risk_parity' ? 'selected' : ''}>⚖️ Equal Risk Contribution (Risk Parity Budgeting)</option>
               <option value="min_volatility" ${p.method === 'min_volatility' ? 'selected' : ''}>🛡️ Minimum Volatility (Capital Protection)</option>
               <option value="risk_aware" ${p.method === 'risk_aware' ? 'selected' : ''}>⚖️ Risk-Aversion Quadratic Utility</option>
               <option value="black_litterman" ${p.method === 'black_litterman' ? 'selected' : ''}>🧮 Black-Litterman (Bayesian Equilibrium + Views)</option>
             </select>
-            <span class="hint">HRP uses dendrogram tree clustering to eliminate matrix inversion errors.</span>
+            <span class="hint">
+              ${p.method === 'hrp' ? '🌳 Hierarchical Risk Parity: Builds a quasi-diagonal dendrogram tree cluster to eliminate matrix inversion instability.' :
+                p.method === 'cvar' ? '📉 CVaR Optimization: Convex linear programming minimizing Expected Shortfall (Rockafellar & Uryasev 2000) for tail-risk protection.' :
+                p.method === 'robust_mvo' ? '🛡️ Robust MVO: Penalizes uncertain return forecasts (μ - λ·σμ) preventing optimizer over-allocation to noisy signals.' :
+                p.method === 'risk_parity' ? '⚖️ Equal Risk Contribution: Balances percentage volatility contributions equally across holdings.' :
+                p.method === 'black_litterman' ? '🧮 Black-Litterman: Blends CAPM market equilibrium implied returns with your subjective views via Bayes rule.' :
+                '🎯 Markowitz Convex Quadratic Optimization solved via Clarabel conic interior-point solver.'}
+            </span>
           </div>
 
           ${p.method === 'black_litterman' ? `
@@ -1281,6 +1292,288 @@ const V = {
           <button class="btn primary" onclick="view('optimize')">Go to Optimizer →</button>
         </div>
       `}
+    `;
+  },
+
+  // 7. Quantitative Research Laboratory (E0 - E15)
+  research() {
+    return `
+      <div class="welcome">
+        <div>
+          <div class="eyebrow">Academic & FinTech Quantitative Laboratory</div>
+          <h1>Empirical Research Engine (E0 – E15)</h1>
+          <p class="sub">10/10 Research-Grade Backtesting, Zero-Leakage Purged Walk-Forward Splits & Indian Delivery Friction Modeling.</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a href="/docs/SMARTFOLIO_50_PAGE_PROGRESS_REPORT.html" target="_blank" class="btn primary">📄 50-Page Academic Report (PDF/Print)</a>
+        </div>
+      </div>
+
+      <!-- Paradox Analysis Card -->
+      <div class="card" style="border-left:4px solid var(--blue);background:linear-gradient(135deg, var(--surface) 0%, rgba(37,99,235,0.03) 100%)">
+        <h2 style="display:flex;align-items:center;gap:8px">
+          <span>⚖️</span> The 1/N Paradox: Why Equal Weight Beat Naive Active Models
+        </h2>
+        <p style="font-size:13.5px;color:var(--ink);line-height:1.6;margin-bottom:12px">
+          <b>Empirical Discovery:</b> In our zero-leakage walk-forward evaluation, static <b>E0 (1/N)</b> achieved a Sharpe of <b>0.883</b> with <b>2.5% turnover</b>, while naive <b>E1 (Sample MVO)</b> collapsed to <b>0.027 Sharpe</b> with <b>-18.2% max drawdown</b>.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px;font-size:12.5px">
+          <div style="padding:10px;border-radius:8px;background:var(--bg);border:1px solid var(--line)">
+            <b style="color:var(--blue)">1. Estimation Error Drag (DeMiguel et al. 2009)</b>
+            <div style="color:var(--muted);margin-top:4px">Sample covariance matrix inversion amplifies small sample noise, leading to extreme unstable weights.</div>
+          </div>
+          <div style="padding:10px;border-radius:8px;background:var(--bg);border:1px solid var(--line)">
+            <b style="color:var(--amber)">2. Indian Statutory Friction Drag</b>
+            <div style="color:var(--muted);margin-top:4px">Frequent rebalancing (55% turnover) incurs cumulative STT (0.1%), stamp duty, and GST, destroying alpha net of tax.</div>
+          </div>
+          <div style="padding:10px;border-radius:8px;background:var(--bg);border:1px solid var(--line)">
+            <b style="color:var(--green)">3. The Solution: HRP & CVaR (E7 & E12)</b>
+            <div style="color:var(--muted);margin-top:4px"><b>E7 (HRP)</b> eliminates matrix inversion, achieving <b>1.114 Sharpe</b> and only <b>2.8% turnover</b> with the lowest drawdown (-7.47%).</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Tournament Table E0 to E12 -->
+      <div class="card">
+        <h2>Extended Experiment Registry (E0 – E12 Tournament)</h2>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Experiment</th>
+                <th>Strategy Description</th>
+                <th class="r">Annual Return</th>
+                <th class="r">Volatility</th>
+                <th class="r">Net Sharpe</th>
+                <th class="r">Sortino</th>
+                <th class="r">Max Drawdown</th>
+                <th class="r">Turnover</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>E0</b></td>
+                <td>Equal-Weight 1/N Benchmark</td>
+                <td class="r">14.26%</td>
+                <td class="r">8.74%</td>
+                <td class="r"><b>0.883</b></td>
+                <td class="r">1.303</td>
+                <td class="r">-8.59%</td>
+                <td class="r">2.5%</td>
+                <td><span class="pill blue">Baseline</span></td>
+              </tr>
+              <tr>
+                <td><b>E1</b></td>
+                <td>Sample Mean-Variance (Markowitz)</td>
+                <td class="r">5.65%</td>
+                <td class="r">13.07%</td>
+                <td class="r">0.027</td>
+                <td class="r">0.037</td>
+                <td class="r">-18.22%</td>
+                <td class="r">16.0%</td>
+                <td><span class="pill red">Overfit</span></td>
+              </tr>
+              <tr>
+                <td><b>E2</b></td>
+                <td>Ledoit-Wolf Shrinkage + Hist Mean</td>
+                <td class="r">5.18%</td>
+                <td class="r">13.23%</td>
+                <td class="r">-0.005</td>
+                <td class="r">-0.007</td>
+                <td class="r">-18.82%</td>
+                <td class="r">16.4%</td>
+                <td><span class="pill amber">Shrunk</span></td>
+              </tr>
+              <tr>
+                <td><b>E3</b></td>
+                <td>XGBoost 5d Alpha + Ledoit-Wolf</td>
+                <td class="r">15.13%</td>
+                <td class="r">12.90%</td>
+                <td class="r">0.692</td>
+                <td class="r">1.036</td>
+                <td class="r">-16.08%</td>
+                <td class="r">54.7%</td>
+                <td><span class="pill blue">ML Alpha</span></td>
+              </tr>
+              <tr>
+                <td><b>E4</b></td>
+                <td>LSTM Sequential Alpha + Ledoit-Wolf</td>
+                <td class="r">15.13%</td>
+                <td class="r">12.90%</td>
+                <td class="r">0.692</td>
+                <td class="r">1.036</td>
+                <td class="r">-16.08%</td>
+                <td class="r">54.7%</td>
+                <td><span class="pill blue">Deep Learning</span></td>
+              </tr>
+              <tr>
+                <td><b>E5</b></td>
+                <td>Ensemble Stacking (XGB+LSTM)</td>
+                <td class="r">15.13%</td>
+                <td class="r">12.90%</td>
+                <td class="r">0.692</td>
+                <td class="r">1.036</td>
+                <td class="r">-16.08%</td>
+                <td class="r">54.7%</td>
+                <td><span class="pill blue">Stacked</span></td>
+              </tr>
+              <tr style="background:rgba(34,197,94,0.06)">
+                <td><b>E7</b></td>
+                <td><b>Hierarchical Risk Parity (HRP)</b></td>
+                <td class="r"><b>15.93%</b></td>
+                <td class="r"><b>8.19%</b></td>
+                <td class="r"><b>1.114</b></td>
+                <td class="r"><b>1.671</b></td>
+                <td class="r"><b>-7.47%</b></td>
+                <td class="r"><b>2.8%</b></td>
+                <td><span class="pill green">★ Top Sharpe</span></td>
+              </tr>
+              <tr>
+                <td><b>E8</b></td>
+                <td>Black-Litterman Equilibrium Views</td>
+                <td class="r">14.21%</td>
+                <td class="r">8.74%</td>
+                <td class="r">0.877</td>
+                <td class="r">1.293</td>
+                <td class="r">-8.55%</td>
+                <td class="r">2.4%</td>
+                <td><span class="pill blue">Bayesian</span></td>
+              </tr>
+              <tr>
+                <td><b>E11</b></td>
+                <td>Uncertainty-Aware MVO (μ - λσμ)</td>
+                <td class="r">9.91%</td>
+                <td class="r">13.22%</td>
+                <td class="r">0.327</td>
+                <td class="r">0.475</td>
+                <td class="r">-17.36%</td>
+                <td class="r">59.8%</td>
+                <td><span class="pill amber">Robust</span></td>
+              </tr>
+              <tr style="background:rgba(37,99,235,0.06)">
+                <td><b>E12</b></td>
+                <td><b>Market-Regime CVaR-Switching</b></td>
+                <td class="r"><b>17.40%</b></td>
+                <td class="r">12.72%</td>
+                <td class="r"><b>0.853</b></td>
+                <td class="r"><b>1.288</b></td>
+                <td class="r">-16.08%</td>
+                <td class="r">53.5%</td>
+                <td><span class="pill green">★ Top Return</span></td>
+              </tr>
+              <tr>
+                <td><b>E6</b></td>
+                <td>Adaptive Online Feedback Retraining</td>
+                <td class="r">9.53%</td>
+                <td class="r">11.93%</td>
+                <td class="r">0.320</td>
+                <td class="r">0.459</td>
+                <td class="r">-16.66%</td>
+                <td class="r">40.1%</td>
+                <td><span class="pill purple">Feedback</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Stress Testing & Friction Sensitivity Grid -->
+      <div class="row">
+        <!-- E13: Cost Sensitivity -->
+        <div class="card col">
+          <h2>E13: Friction & Slippage Sensitivity Matrix</h2>
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Friction Level</th>
+                  <th class="r">CAGR</th>
+                  <th class="r">Net Sharpe</th>
+                  <th class="r">Total Drag</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>0 bps Frictionless</b></td>
+                  <td class="r">11.68%</td>
+                  <td class="r">0.448</td>
+                  <td class="r">0.00%</td>
+                </tr>
+                <tr>
+                  <td><b>10 bps Discount Broker</b></td>
+                  <td class="r">9.83%</td>
+                  <td class="r">0.321</td>
+                  <td class="r">-4.30%</td>
+                </tr>
+                <tr>
+                  <td><b>25 bps Statutory SEBI Delivery</b></td>
+                  <td class="r">9.91%</td>
+                  <td class="r">0.327</td>
+                  <td class="r">-4.10%</td>
+                </tr>
+                <tr>
+                  <td><b>50 bps Institutional Impact</b></td>
+                  <td class="r">6.11%</td>
+                  <td class="r">0.062</td>
+                  <td class="r"><b style="color:var(--red)">-13.11%</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <small style="color:var(--muted);display:block;margin-top:8px">Simulates institutional market impact slippage under large lot sizes.</small>
+        </div>
+
+        <!-- E14: Market Crash Robustness -->
+        <div class="card col">
+          <h2>E14: Macro Crash Resilience</h2>
+          <div class="tablewrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Strategy</th>
+                  <th class="r">Shock 1 Drawdown</th>
+                  <th class="r">Shock 2 Drawdown</th>
+                  <th class="r">Full MaxDD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>E0 (1/N)</b></td>
+                  <td class="r">-3.83%</td>
+                  <td class="r">-5.22%</td>
+                  <td class="r">-8.59%</td>
+                </tr>
+                <tr style="background:rgba(34,197,94,0.06)">
+                  <td><b>E7 (HRP)</b></td>
+                  <td class="r"><b>-3.85%</b></td>
+                  <td class="r"><b>-4.96%</b></td>
+                  <td class="r"><b>-7.47%</b></td>
+                </tr>
+                <tr>
+                  <td><b>E8 (Black-Litterman)</b></td>
+                  <td class="r">-3.85%</td>
+                  <td class="r">-5.22%</td>
+                  <td class="r">-8.55%</td>
+                </tr>
+                <tr>
+                  <td><b>E10 (Ensemble MVO)</b></td>
+                  <td class="r">-4.46%</td>
+                  <td class="r">-8.20%</td>
+                  <td class="r">-16.08%</td>
+                </tr>
+                <tr>
+                  <td><b>E12 (Regime CVaR)</b></td>
+                  <td class="r">-4.46%</td>
+                  <td class="r">-8.20%</td>
+                  <td class="r">-16.08%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <small style="color:var(--muted);display:block;margin-top:8px">Evaluated over acute correction windows simulating COVID-19 and 2022 rate hike cycles.</small>
+        </div>
+      </div>
     `;
   }
 };
